@@ -6,7 +6,7 @@ import { BloodForm } from "./BloodForm";
 import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 
-export default function health() {
+export default function Health() {
     const router = useRouter();
     const [myArray, setMyArray] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -73,7 +73,7 @@ export default function health() {
 
         <ul className="list-inside list-disc my-8">
             {myArray.map((blood) => (
-                <li>{blood.created_at} ({blood.location}): {blood.high}/{blood.low}</li>
+                <li key={blood.created_at}>{blood.created_at} ({blood.location}): {blood.high}/{blood.low}</li>
 
             ))}
         </ul>

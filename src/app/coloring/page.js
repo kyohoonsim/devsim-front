@@ -1,4 +1,4 @@
-export default async function coloring() {
+export default async function Coloring() {
     return (
         <>
         <div>
