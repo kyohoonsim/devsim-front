@@ -11,6 +11,7 @@ export default function Health() {
     const [myArray, setMyArray] = useState([]);
     const [loading, setLoading] = useState(false);
     const [chartYn, setChartYn] = useState(false);
+    const offset = 1000 * 60 * 60 * 9
 
     const fetchData = async() => {
         if (loading) {
@@ -73,11 +74,11 @@ export default function Health() {
                     type="number" 
                     scale="time" 
                     domain={['auto', 'auto']} 
-                    tickFormatter={(value) => new Date(value).toISOString()}
+                    tickFormatter={(value) => new Date(value).toLocaleString()}
                 />
                 <YAxis domain={[40, 200]}/>
                 <Tooltip 
-                    labelFormatter={(value) => new Date(value).toISOString()}
+                    labelFormatter={(value) => new Date(value).toLocaleString()}
                 />
                 <Legend />
                 <Line type="monotone" dataKey="high" stroke="#ec4899" strokeWidth={3} activeDot={{ r: 8 }} />
@@ -140,7 +141,7 @@ export default function Health() {
         <ul className="list-inside list-disc my-8">
             {myArray.map((blood) => (
                 <li key={blood.created_at}>
-                    {new Date(blood.created_at).toISOString()} ({blood.location}): {blood.high}/{blood.low}
+                    {new Date(blood.created_at).toLocaleString()} ({blood.location}): {blood.high}/{blood.low}
                 </li>
             ))}
         </ul>
