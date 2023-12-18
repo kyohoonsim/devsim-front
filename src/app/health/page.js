@@ -137,16 +137,48 @@ export default function Health() {
             <BloodLineChart 
                 blood_pressure_list={bloodPressureList}
             />
+            <div className="flex justify-center text-center my-8">
+                <table className="table-auto border-collapse border border-slate-400">
+                    <thead>
+                        <tr>
+                            <th className="border border-slate-300 bg-pink-500 text-white p-2">
+                                시간
+                            </th>
+                            <th className="border border-slate-300 bg-pink-500 text-white p-2">
+                                장소
+                            </th>
+                            <th className="border border-slate-300 bg-pink-500 text-white p-2">
+                                수축기혈압
+                            </th>
+                            <th className="border border-slate-300 bg-pink-500 text-white p-2">
+                                이완기혈압
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {bloodPressureList.map((blood) => (
+                            <tr key={blood.created_at}>
+                                <td className="border border-slate-300 p-2">
+                                    {new Date(blood.created_at).toLocaleString()} 
+                                </td>
+                                <td className="border border-slate-300 p-2">
+                                    {blood.location} 
+                                </td>
+                                <td className="border border-slate-300 p-2">
+                                    {blood.high} 
+                                </td>
+                                <td className="border border-slate-300 p-2">
+                                    {blood.low} 
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
+            
         </div>
         
-
-        <ul className="list-inside list-disc my-8">
-            {bloodPressureList.map((blood) => (
-                <li key={blood.created_at}>
-                    {new Date(blood.created_at).toLocaleString()} ({blood.location}): {blood.high}/{blood.low}
-                </li>
-            ))}
-        </ul>
+        
         </>
     )
 }
