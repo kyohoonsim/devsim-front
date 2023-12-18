@@ -15,7 +15,7 @@ export default async function Health() {
     }
     const resp = await fetch(process.env.NEXT_PUBLIC_API_URL + `blood-pressure`, options)
     const resp_json = await resp.json();
-    // console.log(resp_json);
+    console.log(resp_json);
     const blood_pressure_list = resp_json.data.blood_pressure_list;
     var i;
     for (i=0; i<blood_pressure_list.length; i++){
